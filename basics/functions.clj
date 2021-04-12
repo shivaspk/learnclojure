@@ -14,3 +14,13 @@
           name (:name cordinates)]
         (println "Latitude" lat "-----" "Longitude" lon  "NAME: " (clojure.string/upper-case name))))
         (location-by-map { :lat "23.63" :long "43.934" :name "bangalore"})
+
+(defn myfun
+    ([]  ( println "No args"))
+    ([a] ( println "One arg: " a))
+    ([a b] (println "Two args a: " a " b: " b))
+    ([a b c] (println "Three args a: " a " b: " b)))
+
+;(myfun)
+;(myfun "test")
+(myfun "Test" "new")
