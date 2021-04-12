@@ -21,3 +21,10 @@
 (def shuffle-data (comp first shuffle ))
 
 (println (shuffle-data [1 4 645 34 24]))
+
+(defn constrained-sqr [x]
+    {:pre  [(pos? x)]
+     :post [(> % 16), (<= % 225)]}
+    (* x x))
+
+(println (constrained-sqr  15))
