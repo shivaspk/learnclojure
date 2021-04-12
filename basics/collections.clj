@@ -14,8 +14,11 @@
 (println "Rest:" (rest myvector))
 (println "at 0th Position:" (get myvector 0))
 
+; this is a map example
 (def mymap (hash-map :INR "INDIA", :USD "US", :GBP "UK", :GBP "United Kingdom", :USD "United States"))
 (println "*******Map output********")
 (println mymap)
 (println "Country:" (get mymap :GBP))
+(println (assoc mymap :SGD "Singapore"))
+(println (update mymap :INR clojure.string/lower-case))
 
