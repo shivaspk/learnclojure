@@ -9,3 +9,7 @@
 (println (multi-operate clojure.string/join "test string" " " "wow"))
 ;; (println (multi-operate clojure.string/reverse "test string"))
 ;; (println (multi-operate inc 30))
+
+(defn random-operation [] (first (shuffle [* / + -])))
+
+((random-operation) 10 5)
