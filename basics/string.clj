@@ -2,3 +2,4 @@
 (println (clojure.string/reverse message))
 (println (clojure.string/upper-case message))
 (println (clojure.string/capitalize message))
+(println (clojure.string/replace message #"\w" (fn [ch] (do (println ch) "$"))))
