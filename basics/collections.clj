@@ -28,3 +28,21 @@
 ;Additional functions
 (println "*******Into output********")
 (println (into #{} [1 2 2 3 3 3 4 4 4 5 5 5 5]))
+(println (sort (into #{} [1 2 2 3 3 3 4 4 4 5 5 5 5])))
+
+;nil and false
+(println (if -1 "True" "False"))
+(println (if 0 "True" "False"))
+(println (if [] "True" "False"))
+
+(println (if (nil? nil) "True NIL" "False"))
+
+(println (if false "True" "False"))
+
+(println (if "True" "Empty False"))
+
+;logical operators
+(println (and true true))
+(println (and true true false))
+
+(println "Equality of Vectors : " (= [4 5 9] [5 5 9]))
