@@ -5,6 +5,7 @@
 (println "First:" (first mylist))
 (println "Rest:" (rest mylist))
 (println "at 4th Position:" (nth mylist 3))
+(println "Cojoined:" (conj mylist 500))
 
 ; this is a vector example
 (def myvector (vector 100 10 23 45 67))
@@ -21,4 +22,9 @@
 (println "Country:" (get mymap :GBP))
 (println (assoc mymap :SGD "Singapore"))
 (println (update mymap :INR clojure.string/lower-case))
+(println (empty? []))
+(println (empty? mymap))
 
+;Additional functions
+(println "*******Into output********")
+(println (into #{} [1 2 2 3 3 3 4 4 4 5 5 5 5]))
