@@ -17,3 +17,4 @@
     (rest temperature-by-day)
     temperature-by-day)
 
+    (mapcat reverse [[ 8 3 2 1 0] [6 5 4] [9 8 7]])
