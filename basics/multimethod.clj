@@ -6,6 +6,13 @@
 (defmethod area :rectangle [{:keys [l w]}]
     (* l w))
 
-(area {:shape :circle :r 10})
+(defmethod area :default [shape]
+    (throw (Exception. (str "Unknown Shape: " shape))))
+    
+    
 
-(area {:shape :rectangle :l 10 :w 20})
+(println(area {:shape :circle :r 10}))
+
+(println(area {:shape :rectangle :l 10 :w 20}))
+
+;;(println(area {:shape :square :r 10}))
