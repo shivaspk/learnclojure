@@ -9,7 +9,7 @@
     (cons 'do (repeat n '(println "test macro"))))
 (repeatme 5)
 
-(macroexpand '(repeatme 5))
+(println (macroexpand '(repeatme 5)))
 
 ;; It's expected to fail as the S will be unresolved
 ;;(defmacro repeatmystr [n s]
@@ -19,6 +19,6 @@
 (defmacro repeatmystr [n s]
     (concat (list 'let ['str s])
         (repeat n '(println str))))
-(repeatmystr 5 "TEST")
+(repeatmystr 5 "abc")
 
-(macroexpand '(repeatmystr 5 "TEST"))
+(macroexpand '(repeatmystr 5 "abc"))
