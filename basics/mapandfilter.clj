@@ -18,3 +18,11 @@
 (println (map (fn [i] (* 10 i)) (filter odd? [10 10 20 30 4 5])))
 
 (->> [1 7 20 30 4 5] (filter odd?) (map (fn [i] (* 10 i))) (println))
+
+(println (first (.split (.replace (.toUpperCase "a b c d") "A" "X") " ")))
+
+(-> "a b c d" 
+    .toUpperCase 
+    (.replace "A" "X") 
+    (.split " ") 
+    first)
