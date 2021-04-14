@@ -4,3 +4,9 @@
 (test)
 
 (macroexpand '(test))
+
+(defmacro repeatme [n]
+    (cons 'do (repeat n '(println "test macro"))))
+(repeatme 5)
+
+(macroexpand '(repeatme 5))
