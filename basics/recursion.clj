@@ -17,3 +17,5 @@
 	([n] (lazy-seq (cons n (positive-numbers (inc n))))))
 
     (take 50 (positive-numbers))
+
+    (take 20 (iterate (partial + 2) 0))
