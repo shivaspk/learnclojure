@@ -7,6 +7,6 @@
 
 (dotimes [n 5] (println "n is" n))
 
-(for [x (range 6)] 
-    (* x x))
+(for [x (range 6)]
+  (* x x))
 
