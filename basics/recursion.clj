@@ -11,3 +11,9 @@
       (println i)    
       (recur (inc i)); loop i will take this value
   ))
+
+  (defn positive-numbers 
+	([] (positive-numbers 1))
+	([n] (lazy-seq (cons n (positive-numbers (inc n))))))
+
+    (take 50 (positive-numbers))
