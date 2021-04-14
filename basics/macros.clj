@@ -22,3 +22,8 @@
 (repeatmystr 5 "abc")
 
 (macroexpand '(repeatmystr 5 "abc"))
+
+(defmacro repeatmystrsq [n s]
+   `(do ~@(repeat n `(println ~s))))
+(println (macroexpand '(repeatmystrsq 5 "TEST QQQQ")))
+(repeatmystrsq 5 "TEST QQQQ")
