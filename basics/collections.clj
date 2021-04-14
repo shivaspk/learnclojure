@@ -1,5 +1,5 @@
 ; this is a list example
-(def myvector (list 100 10 23 45 67))
+(def mylist (list 100 10 23 45 67))
 (println "*******List output********")
 (println "Sorted:" (sort mylist))
 (println "First:" (first mylist))
