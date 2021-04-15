@@ -11,8 +11,11 @@
 (println (compare-and-set! my-atom 100 100))
 (println @my-atom)
 
-(def my-ref (ref 1 :validator pos?))
-(println @my-ref)
+(def my-ref-pos (ref 1 :validator pos?))
+(println @my-ref-pos)
 
-(def my-ref (ref 1 :validator neg?))
-(println @my-ref)
+(def my-ref-neg (ref -1 :validator neg?))
+    (dosync 
+        (ref-set my-ref-neg -100)
+    )
+(println @my-ref-neg)
