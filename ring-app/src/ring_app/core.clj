@@ -28,4 +28,5 @@
   "I don't do a whole lot ... yet."
   [& args]
   (println "Ring Starting....")
+  ;;(jetty/run-jetty handler  {:port  3000})
   (jetty/run-jetty  (-> handler ringparams/wrap-params) {:port  3000}))
