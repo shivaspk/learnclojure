@@ -2,10 +2,13 @@
 (println  "AGENT" @counter)
 (send counter + 50)
 (println "AGENT" @counter)
-
+;;(shutdown-agents)
 (Thread/sleep 100) 
 (println "AGENT" @counter)
-
+(send-off counter + 1000)
+(println "AGENT" @counter)
+(await counter)
+(println "AGENT" @counter)
 
 (def counter (atom 0))
 (println "ATOM" @counter)
