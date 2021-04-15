@@ -5,7 +5,8 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [clojure.java-time "0.3.2"]
-                 [clj-json "0.5.3"]]
+                 [clj-json "0.5.3"]
+                 [clojure-humanize "0.2.2"]]
   :main ^:skip-aot hello-app.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
