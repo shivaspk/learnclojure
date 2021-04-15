@@ -19,3 +19,16 @@
         (ref-set my-ref-neg -100)
     )
 (println @my-ref-neg)
+
+(def emps (ref []))
+
+(defn modifyemps [emp]
+    (dosync
+        (alter emps conj emp)))
+(println @emps)        
+(modifyemps "Siva")
+(println @emps)
+(modifyemps "Vijay")
+(println @emps)
+(modifyemps "Raj")
+(println @emps)
