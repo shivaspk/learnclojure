@@ -1,11 +1,18 @@
-(def my-atom (atom 0))
+(def my-atom (atom 100))
 
-(swap! my-atom inc)
-(swap! my-atom inc)
-(swap! my-atom (fn [n] (* (+ n n) 2)))
+;; (swap! my-atom inc)
+;; (swap! my-atom inc)
+;; (swap! my-atom (fn [n] (* (+ n n) 2)))
 
-(reset! my-atom 100)
+;; (reset! my-atom 100)
 
-(println (time (doall(map inc (range 100)))))
+(println @my-atom)
 
-(println (time (doall(map inc (range 100)))))
+(println (compare-and-set! my-atom 100 100))
+(println @my-atom)
+
+(def my-ref (ref 1 :validator pos?))
+(println @my-ref)
+
+(def my-ref (ref 1 :validator neg?))
+(println @my-ref)
