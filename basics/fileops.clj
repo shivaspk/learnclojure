@@ -4,6 +4,7 @@
 
 (spit "hello.txt" "This is a file from clojure!")
 
+;; read a file safely else print a error
 (try
 
   (slurp "hello.txt")
