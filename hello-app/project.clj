@@ -9,4 +9,6 @@
   :main ^:skip-aot hello-app.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
-                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}})
+                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}
+             :dev {:dependencies [[expectations "2.1.10"]]}
+             })
