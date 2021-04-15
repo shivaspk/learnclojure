@@ -18,3 +18,6 @@
 (import java.util.Date)
 (let [date (Date.)]
 (println date))
+
+;;map
+(doto (new java.util.HashMap) (.put "a" 1) (.put "b" 2))
