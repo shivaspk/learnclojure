@@ -15,7 +15,7 @@
 (defn echoresponse [req]
   {:status 200
    :headers {"Content-Type" "text/html"}
-   :body (-> (pp/pprint req)(str "request: " req))})
+   :body (-> (pp/pprint req) (str "request: " req))})
 
 (defn helloresponse [req]
   {:status 200
@@ -27,13 +27,31 @@
    :headers {"Content-Type" "application/json"}
    :body (json/write-str {:hello "This is a json!"})})
 
+(def employees (atom []))
+
+(defn addemployee [empid name]
+  (swap! employees conj {:empid empid :empname name})
+)
+
+(addemployee "Q123" "Rakesh Sharma")
+
+(defn getemployees [req]
+  {:status 200
+   :headers {"Content-Type" "application/json"}
+   :body (json/write-str @employees)})
+
 (defroutes app
   (GET "/" [] defaultresponse)
   (GET "/echo" [] echoresponse)
   (GET "/hello" [] "Hello Team!")
+  (GET "/employees" [] getemployees)
   (GET "/employee/:empid" [] helloresponse)
   (GET "/hellojson" [] hellojsonresponse)
   (POST "/hellojson" [] hellojsonresponse)
+  (PUT "/hellojson" [] hellojsonresponse)
+  (DELETE "/hellojson" [] hellojsonresponse)
+
+
 
   (route/not-found "<h1>Page not found</h1>"))
 
