@@ -10,9 +10,15 @@
    :headers {"Content-Type" "text/html"}
    :body "<h1>Hello Compojure!</h1>"})
 
+(defn helloresponse [req]
+  {:status 200
+   :headers {"Content-Type" "text/html"}
+   :body (str "Hello " (:name (:params req)))})
+
+
 (defroutes app
   (GET "/" [] defaultresponse)
-  (GET "/hello" [] "<h1>Hello</h1>")
+  (GET "/hello/:name" [] helloresponse)
   (route/not-found "<h1>Page not found</h1>"))
 
 (defn -main []
