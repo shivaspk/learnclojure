@@ -6,5 +6,7 @@
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [ring "1.9.2"]
                  [compojure "1.6.2"]]
+  :plugins [[lein-ring "0.12.5"]]
+  :ring {:handler ringcompojure-app.core/app}
   :main ^:skip-aot ringcompojure-app.core
   :repl-options {:init-ns ringcompojure-app.core})

@@ -13,12 +13,13 @@
 (defn helloresponse [req]
   {:status 200
    :headers {"Content-Type" "text/html"}
-   :body (str "Hello " (:name (:params req)))})
+   :body (str "Hello " (:empid (:params req)))})
 
 
 (defroutes app
   (GET "/" [] defaultresponse)
-  (GET "/hello/:name" [] helloresponse)
+  (GET "/hello" [] "Hello Team!")
+  (GET "/employee/:empid" [] helloresponse)
   (route/not-found "<h1>Page not found</h1>"))
 
 (defn -main []
