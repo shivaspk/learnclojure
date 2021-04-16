@@ -1,4 +1,5 @@
 (ns liberator-app.core (:require [liberator.core :refer [resource defresource]]
+                                 [liberator.dev :refer [wrap-trace]]
                                  [ring.middleware.params :refer [wrap-params]]
                                  [compojure.core :refer [defroutes ANY]]
                                  [clojure-csv.core :as csv]))
@@ -31,4 +32,5 @@
   )
 (def handler
   (-> app
-      wrap-params))
+      wrap-params
+      (wrap-trace :header :ui)))
