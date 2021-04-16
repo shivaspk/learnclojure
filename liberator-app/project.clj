@@ -6,7 +6,7 @@
   :plugins [[lein-ring "0.12.5"]]
   :ring {:handler liberator-app.core/handler}
   :dependencies [[org.clojure/clojure "1.10.1"]
-                 [liberator "0.15.1"]
+                 [liberator "0.15.3"]
                  [compojure "1.6.2"]
                  [ring/ring-core "1.9.2"]]
   :repl-options {:init-ns liberator-app.core})
