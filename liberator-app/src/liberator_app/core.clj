@@ -15,7 +15,7 @@
                     :handle-ok "<html><h1>Hello, Liberator!</h1></html>"))
   (ANY "/hello/:name" [name] (parameter name))
   (ANY "/babel" []
-    (resource :available-media-types ["text/plain" "text/html" "text/csv"
+    (resource :available-media-types ["text/plain" "text/html" "text/csv" "application/xml"
                                       "application/json" "application/clojure;q=0.9"]
               :handle-ok
               #(let [media-type
@@ -23,6 +23,7 @@
                  (condp = media-type
                    "text/plain" "You requested plain text"
                    "text/csv" (csv/write-csv [["Sl no" "name" "place"]["1" "Siva" "BLR"]])
+                   "application/xml" "<test> data as xml </test>"
                    "text/html" "<html><h1>You requested HTML</h1></html>"
                    {:message "You requested a media type"
                     :media-type media-type}))
