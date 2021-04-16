@@ -5,7 +5,8 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [ring "1.9.2"]
-                 [compojure "1.6.2"]]
+                 [compojure "1.6.2"]
+                 [org.clojure/data.json "2.1.1"]]
   :plugins [[lein-ring "0.12.5"]]
   :ring {:handler ringcompojure-app.core/app}
   :main ^:skip-aot ringcompojure-app.core

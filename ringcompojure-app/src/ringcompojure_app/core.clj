@@ -4,7 +4,8 @@
             [ring.util.response :as ringresponse]
             [clojure.pprint :as pp]
             [compojure.core :refer :all]
-            [compojure.route :as route]))
+            [compojure.route :as route]
+            [clojure.data.json :as json]))
 
 (defn defaultresponse [req]
   {:status 200
@@ -21,12 +22,18 @@
    :headers {"Content-Type" "text/html"}
    :body (str "Hello " (:empid (:params req)))})
 
+(defn hellojsonresponse [req]
+  {:status 200
+   :headers {"Content-Type" "application/json"}
+   :body (str (json/write-str {:hello "This is a json!"}))})
 
 (defroutes app
   (GET "/" [] defaultresponse)
   (GET "/echo" [] echoresponse)
   (GET "/hello" [] "Hello Team!")
   (GET "/employee/:empid" [] helloresponse)
+  (GET "/hellojson" [] hellojsonresponse)
+
   (route/not-found "<h1>Page not found</h1>"))
 
 (defn -main []
