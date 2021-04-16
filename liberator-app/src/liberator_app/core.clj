@@ -1,6 +1,7 @@
 (ns liberator-app.core (:require [liberator.core :refer [resource defresource]]
                                  [ring.middleware.params :refer [wrap-params]]
-                                 [compojure.core :refer [defroutes ANY]]))
+                                 [compojure.core :refer [defroutes ANY]]
+                                 [clojure-csv.core :as csv]))
 
 (defresource parameter [txt]
   :available-media-types ["text/plain"]
@@ -14,13 +15,14 @@
                     :handle-ok "<html><h1>Hello, Liberator!</h1></html>"))
   (ANY "/hello/:name" [name] (parameter name))
   (ANY "/babel" []
-    (resource :available-media-types ["text/plain" "text/html"
+    (resource :available-media-types ["text/plain" "text/html" "text/csv"
                                       "application/json" "application/clojure;q=0.9"]
               :handle-ok
               #(let [media-type
                      (get-in % [:representation :media-type])]
                  (condp = media-type
                    "text/plain" "You requested plain text"
+                   "text/csv" (csv/write-csv [["Sl no" "name" "place"]["1" "Siva" "BLR"]])
                    "text/html" "<html><h1>You requested HTML</h1></html>"
                    {:message "You requested a media type"
                     :media-type media-type}))
