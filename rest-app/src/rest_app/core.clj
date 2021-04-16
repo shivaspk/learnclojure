@@ -16,14 +16,16 @@
   :allowed-methods [:get :post]
   :available-media-types ["application/json"]
   :post! @employees-ref
-  :post-redirect? (fn [ctx] {:location (format "/employees/1")})
+  :handle-created (fn [ctx]
+                            (format (str "{body: %s a: 1 b: 4}"), "the body part"))
+ ;; :post-redirect? (fn [ctx] {:location (format "/employees/1")})
   :handle-ok @employees-ref
   :handle-not-found {:error "ID is not found"})
 
 (defresource employee [empid]
   :allowed-methods [:get :put :delete]
   :available-media-types ["application/json"]
-  :exists? (fn [_] (let [result (get @employees-ref empid)]
+  :exists? (fn [_] (let [result (get @employees-ref {:empid empid})]
                       (if-not (nil? result) {::entry result}) 
                       ))
   :handle-ok ::entry
