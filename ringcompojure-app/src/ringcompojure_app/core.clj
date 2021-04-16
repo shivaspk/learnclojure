@@ -25,7 +25,7 @@
 (defn hellojsonresponse [req]
   {:status 200
    :headers {"Content-Type" "application/json"}
-   :body (str (json/write-str {:hello "This is a json!"}))})
+   :body (json/write-str {:hello "This is a json!"})})
 
 (defroutes app
   (GET "/" [] defaultresponse)
@@ -33,6 +33,7 @@
   (GET "/hello" [] "Hello Team!")
   (GET "/employee/:empid" [] helloresponse)
   (GET "/hellojson" [] hellojsonresponse)
+  (POST "/hellojson" [] hellojsonresponse)
 
   (route/not-found "<h1>Page not found</h1>"))
 
