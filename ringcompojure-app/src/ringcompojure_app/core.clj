@@ -40,11 +40,24 @@
    :headers {"Content-Type" "application/json"}
    :body (json/write-str @employees)})
 
+
+(defn addemployeetoatom [empid empname]
+  (swap! employees conj {:empid empid :empname empname})
+  )
+
+
+(defn addemployee [req]
+  {:status 201
+   :headers {"Content-Type" "application/json"}
+   :body (json/write-str (addemployeetoatom  (:empid (:params req)) (:empname (:params req))))})
+
+
 (defroutes app
   (GET "/" [] defaultresponse)
   (GET "/echo" [] echoresponse)
   (GET "/hello" [] "Hello Team!")
   (GET "/employees" [] getemployees)
+  (POST "/employees/:empid/:empname" [] addemployee)
   (GET "/employee/:empid" [] helloresponse)
   (GET "/hellojson" [] hellojsonresponse)
   (POST "/hellojson" [] hellojsonresponse)
